@@ -1,0 +1,24 @@
+import { SomeComponent } from '@my/library/some-component';
+import { Directive, InjectionToken, NgModule, Optional } from '@angular/core';
+
+export const BAR_TOKEN = new InjectionToken<string>('bar-token');
+
+@Directive({
+  selector: 'input[Bar]'
+})
+export class BarDirective{
+  constructor(
+    @Optional() private _formField: SomeComponent) {
+  }
+}
+
+
+@NgModule({
+  declarations: [
+    BarDirective
+  ],
+  exports: [
+    BarDirective
+  ]
+})
+export class BarModule { }
